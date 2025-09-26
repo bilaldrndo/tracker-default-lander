@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Ovo treba da bude ovdje -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline';">
+    <meta http-equiv="delegate-ch"
+        content="sec-ch-ua tracker.mntzdevs.com; sec-ch-ua-mobile tracker.mntzdevs.com; sec-ch-ua-arch tracker.mntzdevs.com; sec-ch-ua-model tracker.mntzdevs.com; sec-ch-ua-platform tracker.mntzdevs.com; sec-ch-ua-platform-version tracker.mntzdevs.com; sec-ch-ua-bitness tracker.mntzdevs.com; sec-ch-ua-full-version-list tracker.mntzdevs.com; sec-ch-ua-full-version tracker.mntzdevs.com;">
+
+    <style>
+        body {
+            background-color: red;
+        }
+
+        h1 {
+            font-size: 70px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <h1>Our Lander 1</h1>
+    <a href="https://tracker.mntzdevs.com/ctas/1">Click 1</a>
+
+
+
+    <script>
+        !(function (e, t, n, o) {
+            function c() {
+                const e = t.querySelectorAll(".dtpcnt")
+                for (let t = 0; t < e.length; t++)e[t].className = e[t].className.replace(/(^|\s+)dtpcnt($|\s+)/g, "")
+            } function l(e) {
+                const o = t.cookie.match(new RegExp(`(^| )${e}=([^;]+)`))
+                if (o) return o.pop()
+                const c = n.getItem(`${e}-expires`)
+                return c && +c > Date.now() ? n.getItem(e) : null
+            } function a(e, o, c, l = 864e5) {
+                const a = new Date
+                a.setTime(a.getTime() + l), t.cookie = `${e}=${o}; ${c}samesite=Strict; expires=${a.toGMTString()}; path=/`, n.setItem(e, o), n.setItem(`${e}-expires`, a.getTime())
+            } const s = "https:" === e.location.protocol ? "secure; " : ""
+            e.dtpCallback || (e.dtpCallback = function () { (e.dtpCallback.q = e.dtpCallback.q || []).push(arguments) })
+            let r = t.onreadystatechange
+            t.onreadystatechange = function () {
+                if (r && r.apply(this, arguments), e.dtpCallback && !e.dtpCallback.hasOwnProperty("params") && /loaded|interactive|complete/.test(t.readyState)) {
+                    let n, o = 0
+                    for (; n = t.links[o++];)if (/\/?click\/?($|(\/[0-9]+)?$)/.test(n.pathname)) {
+                        const t = "javascrip" + e.postMessage.toString().charAt(4)
+                        n.href = `${t}:dtpCallback.l="${n.href}",void 0`
+                    }
+                }
+            }, setTimeout(function () {
+                const n = /[?&]cpid(=([^&#]*)|&|#|$)/.exec(e.location.href)
+                let r = n && n[2], i = r ? l("vl-" + r) : null
+                const p = l("vl-cep")
+                let d = location.href
+                if ("savedCep" === p && p && !r && !d.includes("cep=")) {
+                    const e = d.includes("?") ? "&" : "?"
+                    d += e + p
+                } const f = t.createElement("script"), m = t.scripts[0]
+                f.defer = !0, f.src = o + (o.includes("?") ? "&" : "?") + `lpref=${encodeURIComponent(t.referrer)}` + `&lpurl=${encodeURIComponent(d)}` + `&lpt=${encodeURIComponent(t.title)}` + `&vtm=${Date.now()}` + (i ? "&uw=no" : ""), f.onerror = function () {
+                    let e, n = 0
+                    for (; e = t.links[n++];)if (/dtpCallback\.l/.test(e.href)) {
+                        const t = decodeURIComponent(e.href).match(/dtpCallback\.l="([^"]+)/)
+                        t && (e.href = t[1])
+                    } c()
+                }, m.parentNode.insertBefore(f, m), r && a("vl-" + r, "1", s)
+            }, 0), setTimeout(c, 7e3)
+        })(window, document, localStorage, "https://tracker.mntzdevs.com/scripts/l.js")
+    </script>
+
+
+</body>
+
+</html>
